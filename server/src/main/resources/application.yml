@@ -1,0 +1,26 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+  datasource:
+    url: jdbc:postgresql://localhost:5432/saltdb
+    username: salt
+    password: secret
+  jpa:
+    show-sql: true
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+  sql:
+    init:
+      platform: postgresql
+      mode: always # run initialisation scripts or not
+
+## Logging settings
+debug: true
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure: ERROR
