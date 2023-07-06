@@ -22,4 +22,6 @@ public class Controller {
         List<Job> jobList = service.findAllJobs();
         return ResponseEntity.ok().body(jobList);
     }
+
+    //Remeber to parse date from string to LocalDate format
 }
