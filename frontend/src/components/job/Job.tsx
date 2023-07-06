@@ -1,7 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type JobProps = {
+  id: string;
   companyName: string;
   title: string;
   description: string;
@@ -12,7 +13,7 @@ type JobProps = {
 
 type JobProp = {
   job: JobProps;
-  deleteJob: () => void;
+  deleteJob: (id: string) => void;
   updateJob: (updatedJob: JobProps) => void;
 };
 
@@ -20,11 +21,16 @@ const Job = ({ job, deleteJob, updateJob }: JobProp) => {
   const [editMode, setEditMode] = useState(false);
   const [editedJob, setEditedJob] = useState<JobProps>(job);
 
+  useEffect(() => {
+    setEditedJob(job);
+  }, [job]);
+
   const handleEdit = () => {
     setEditMode(true);
   };
 
   const handleSave = () => {
+    console.log("Save clicked:", editedJob); // Logging the edited job data
     updateJob(editedJob);
     setEditMode(false);
   };
@@ -36,7 +42,7 @@ const Job = ({ job, deleteJob, updateJob }: JobProp) => {
 
   const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    deleteJob();
+    deleteJob(job.id);
   };
 
   const handleInputChange = (
@@ -70,7 +76,7 @@ const Job = ({ job, deleteJob, updateJob }: JobProp) => {
             onChange={handleInputChange}
           />
         ) : (
-          job.title
+          editedJob.title
         )}
       </td>
       <td>
@@ -81,7 +87,7 @@ const Job = ({ job, deleteJob, updateJob }: JobProp) => {
             onChange={handleInputChange}
           ></textarea>
         ) : (
-          job.description
+          editedJob.description
         )}
       </td>
       <td>
@@ -93,10 +99,10 @@ const Job = ({ job, deleteJob, updateJob }: JobProp) => {
             onChange={handleInputChange}
           />
         ) : (
-          job.address
+          editedJob.address
         )}
       </td>
-      <td>{job.date}</td>
+      <td>{editedJob.date}</td>
       <td>
         {editMode ? (
           <select
@@ -109,7 +115,7 @@ const Job = ({ job, deleteJob, updateJob }: JobProp) => {
             <option value="completed">Completed</option>
           </select>
         ) : (
-          job.status
+          editedJob.status
         )}
       </td>
       <td>

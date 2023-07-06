@@ -63,6 +63,7 @@ function App() {
       if (!response.ok) {
         throw new Error("Failed to update job");
       }
+
       setJobs((jobs) =>
         jobs.map((job) =>
           job.id === updatedJob.id ? { ...job, ...updatedJob } : job

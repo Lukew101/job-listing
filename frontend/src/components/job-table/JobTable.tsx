@@ -25,6 +25,7 @@ const JobTable = ({ companyName, jobs, deleteJob, updateJob }: TableProps) => {
   };
 
   const handleUpdateJob = (updatedJob: JobProps) => {
+    console.log(updatedJob);
     updateJob(updatedJob);
   };
 
@@ -42,12 +43,12 @@ const JobTable = ({ companyName, jobs, deleteJob, updateJob }: TableProps) => {
           </tr>
         </thead>
         <tbody>
-          {jobs.map((job, index) => (
+          {jobs.map((job) => (
             <Job
-              key={index}
+              key={job.id}
               job={job}
               deleteJob={() => handleDeletePerson(job.id)}
-              updateJob={() => handleUpdateJob(job)}
+              updateJob={handleUpdateJob}
             />
           ))}
         </tbody>
