@@ -10,7 +10,7 @@ type JobProps = {
     address: String,
     date: String,
     status: String
-  }
+}
 
 type BoardProps = {
   jobs: JobProps[];

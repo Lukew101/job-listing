@@ -29,8 +29,8 @@ class ControllerTest {
     RestTemplate restTemplate;
 
     @BeforeAll
-    static void initCart(@Autowired RestTemplate template, @Value("${server.port}") int port ) {
-        String uri = "http://localhost:%s/api/carts".formatted(port);
+    static void initJob(@Autowired RestTemplate template, @Value("${server.port}") int port ) {
+        String uri = "http://localhost:%s/api/jobs".formatted(port);
         try {
             ResponseEntity<Job> exchange = template.exchange(uri, HttpMethod.POST, HttpEntity.EMPTY, Job.class);
             jobId = Objects.requireNonNull(exchange.getBody()).getId();
