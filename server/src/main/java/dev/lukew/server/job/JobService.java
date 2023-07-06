@@ -18,4 +18,8 @@ public class JobService {
     public List<Job> findAllJobs() {
         return repo.findAllJobs();
     }
+
+    public Job saveJob(Job job) {
+        return repo.saveJob(job);
+    }
 }

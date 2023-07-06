@@ -1,8 +1,12 @@
 package dev.lukew.server.job;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.text.DateFormat;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -23,5 +27,16 @@ public class Controller {
         return ResponseEntity.ok().body(jobList);
     }
 
-    //Remeber to parse date from string to LocalDate format
+    @PostMapping
+    public ResponseEntity<Job> createJob(@RequestBody JobDTO jobDTO) {
+        Job newJob = jobDTO.toEntity();
+        Job savedJob = service.saveJob(newJob);
+
+        URI location = URI.create("/api/jobs/" + savedJob.getId());
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(location);
+
+        return ResponseEntity.created(location).body(savedJob);
+    }
 }

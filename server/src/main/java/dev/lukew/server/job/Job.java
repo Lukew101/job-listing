@@ -9,21 +9,15 @@ import java.util.Objects;
 @Entity
 public class Job {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name= "id", nullable = false)
     private Long id;
-
     private String companyName;
-
     private String title;
-
     private String description;
-
     private String address;
-
     private LocalDate date;
-
     private String status;
-
 
     public Job(String companyName, String title, String description, String address, LocalDate date, String status) {
         this.companyName = companyName;
@@ -34,9 +28,7 @@ public class Job {
         this.status = status;
     }
 
-    public Job() {
-
-    }
+    public Job() {}
 
     public Long getId() {
         return id;

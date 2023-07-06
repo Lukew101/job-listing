@@ -19,4 +19,8 @@ public class JobRepository {
     public List<Job> findAllJobs(){
         return Streamable.of(repo.findAll()).toList();
     }
+
+    public Job saveJob(Job job) {
+        return repo.save(job);
+    }
 }
