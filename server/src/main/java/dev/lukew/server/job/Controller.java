@@ -16,4 +16,10 @@ public class Controller {
     public Controller(JobService service) {
         this.service = service;
     }
+
+    @GetMapping
+    public ResponseEntity<List<Job>> getJobList(){
+        List<Job> jobList = service.findAllJobs();
+        return ResponseEntity.ok().body(jobList);
+    }
 }

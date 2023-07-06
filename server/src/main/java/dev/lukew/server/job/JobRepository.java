@@ -15,4 +15,8 @@ public class JobRepository {
     public JobRepository(JpaJobRepository repo) {
         this.repo = repo;
     }
+
+    public List<Job> findAllJobs(){
+        return Streamable.of(repo.findAll()).toList();
+    }
 }
