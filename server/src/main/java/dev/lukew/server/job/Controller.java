@@ -50,4 +50,21 @@ public class Controller {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Failed to delete job: " + e.getMessage());
         }
     }
+
+    @PutMapping("/{jobId}")
+    public ResponseEntity<Job> updateJob(@PathVariable Long jobId, @RequestBody JobDTO jobDTO) {
+        Job existingJob = service.findJobById(jobId);
+
+        if (existingJob  == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        existingJob.setTitle(jobDTO.title());
+        existingJob.setDescription(jobDTO.description());
+        existingJob.setAddress(jobDTO.address());
+        existingJob.setStatus(jobDTO.status());
+
+        Job updatedJob = service.saveJob(existingJob);
+        return ResponseEntity.ok().body(updatedJob);
+    }
 }

@@ -26,4 +26,8 @@ public class JobService {
     public void deleteJob(Long jobId) {
         repo.deleteJob(jobId);
     }
+
+    public Job findJobById(Long jobId) {
+        return repo.findJobById(jobId);
+    }
 }
