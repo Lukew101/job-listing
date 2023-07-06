@@ -1,27 +1,26 @@
-import { useState } from "react"
-import Job from "../job/Job"
+import { useState } from "react";
+import Job from "../job/Job";
 
 type JobProps = {
-    id: string,
-    companyName: string,
-    title: string,
-    description: string,
-    address: string,
-    date: string,
-    status: string
-}
+  id: string;
+  companyName: string;
+  title: string;
+  description: string;
+  address: string;
+  date: string;
+  status: string;
+};
 
 type TableProps = {
-  companyName: string,
-  jobs: JobProps[]
+  companyName: string;
+  jobs: JobProps[];
   deleteJob: (id: string) => void;
-}
+};
 
 const JobTable = ({ companyName, jobs, deleteJob }: TableProps) => {
-
-    const handleDeletePerson = (id: string) => {
-        deleteJob(id);
-      };
+  const handleDeletePerson = (id: string) => {
+    deleteJob(id);
+  };
 
   return (
     <div>
@@ -38,12 +37,16 @@ const JobTable = ({ companyName, jobs, deleteJob }: TableProps) => {
         </thead>
         <tbody>
           {jobs.map((job, index) => (
-            <Job key={index} job={job} deleteJob={() => handleDeletePerson(job.id)} />
+            <Job
+              key={index}
+              job={job}
+              deleteJob={() => handleDeletePerson(job.id)}
+            />
           ))}
         </tbody>
       </table>
     </div>
-  )
-}
+  );
+};
 
 export default JobTable;
