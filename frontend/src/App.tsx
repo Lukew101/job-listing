@@ -14,6 +14,7 @@ type JobProps = {
   status: string
 }
 
+
 function App() {
 
   const [jobs, setJobs] = useState<JobProps[]>([]);

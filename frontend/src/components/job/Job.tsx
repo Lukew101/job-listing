@@ -2,18 +2,20 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 
 type JobProps = {
-  job: {
     companyName: String;
     title: String;
     description: String;
     address: String;
     date: String;
     status: String;
-  };
-  deleteJob: () => void;
 };
 
-const Job = ({ job, deleteJob }: JobProps) => {
+type JobProp = {
+    job: JobProps,
+    deleteJob: () => void;
+}
+
+const Job = ({ job, deleteJob }: JobProp) => {
     const [displayButtons, setDisplayButtons] = useState(false);
   const handleEdit = (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
@@ -33,6 +35,7 @@ const Job = ({ job, deleteJob }: JobProps) => {
     <tr onClick={handleDisplayDelete}>
       <td>{job.title}</td>
       <td>{job.description}</td>
+      <td>{job.address}</td>
       <td>{job.date}</td>
       <td>{job.status}</td>
       <td>
