@@ -5,12 +5,13 @@ import { useEffect, useState } from 'react';
 import JobListingBoard from './components/job-listing-board/JobListingBoard';
 
 type JobProps = {
-  companyName: String,
-  title: String,
-  description: String,
-  address: String,
-  date: String,
-  status: String
+  id: string,
+  companyName: string,
+  title: string,
+  description: string,
+  address: string,
+  date: string,
+  status: string
 }
 
 function App() {
@@ -35,16 +36,25 @@ function App() {
     }
   };
 
-  const addNewJob = (job: JobProps) => {
-    setJobs((prevJobs) => [...prevJobs, job]);
+  const deleteJobFetch = async (jobId: String) => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/jobs/${jobId}`, {
+        method: "DELETE",
+      })
+      if (!response.ok) {
+        throw new Error("Failed to delete developer");
+      }
+      setJobs((jobs) => jobs.filter((job) => job.id !== jobId));
+    } catch (error) {
+      console.error(error);
+    }
   }
-  
 
   return (
     <main>
       <h1>The Project Manager</h1>
-      <AddNewJob addNewJob={addNewJob}/>
-      <JobListingBoard jobs={jobs} />
+      <AddNewJob addNewJob={fetchJobs}/>
+      <JobListingBoard jobs={jobs} deleteJob={deleteJobFetch} />
     </main>
   )
 }

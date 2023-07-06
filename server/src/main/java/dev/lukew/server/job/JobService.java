@@ -22,4 +22,8 @@ public class JobService {
     public Job saveJob(Job job) {
         return repo.saveJob(job);
     }
+
+    public void deleteJob(Long jobId) {
+        repo.deleteJob(jobId);
+    }
 }

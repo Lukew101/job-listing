@@ -2,29 +2,27 @@ import { useState } from "react"
 import Job from "../job/Job"
 
 type JobProps = {
-    companyName: String,
-    title: String,
-    description: String,
-    address: String,
-    date: String,
-    status: String
+    id: string,
+    companyName: string,
+    title: string,
+    description: string,
+    address: string,
+    date: string,
+    status: string
 }
 
 type TableProps = {
-  companyName: String,
+  companyName: string,
   jobs: JobProps[]
+  deleteJob: (id: string) => void;
 }
 
-const JobTable = ({ companyName, jobs }: TableProps) => {
-    const [jobList, setJobList] = useState(jobs);
+const JobTable = ({ companyName, jobs, deleteJob }: TableProps) => {
 
-    const editJob = () => {
+    const handleDeletePerson = (id: string) => {
+        deleteJob(id);
+      };
 
-    }
-
-    const deleteJob = () => {
-
-    }
   return (
     <div>
       <h3>{companyName}</h3>
@@ -40,7 +38,7 @@ const JobTable = ({ companyName, jobs }: TableProps) => {
         </thead>
         <tbody>
           {jobs.map((job, index) => (
-            <Job key={index} job={job} editJob={editJob} deleteJob={deleteJob} />
+            <Job key={index} job={job} deleteJob={() => handleDeletePerson(job.id)} />
           ))}
         </tbody>
       </table>

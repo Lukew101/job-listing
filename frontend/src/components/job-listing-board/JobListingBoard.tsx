@@ -4,27 +4,29 @@ import JobTable from '../job-table/JobTable';
 
 
 type JobProps = {
-    companyName: String,
-    title: String,
-    description: String,
-    address: String,
-    date: String,
-    status: String
+    id: string,
+    companyName: string,
+    title: string,
+    description: string,
+    address: string,
+    date: string,
+    status: string
 }
 
 type BoardProps = {
   jobs: JobProps[];
+  deleteJob: (id: string) => void;
 }
 
-const JobListingBoard = ({ jobs }: BoardProps) => {
+const JobListingBoard = ({ jobs, deleteJob }: BoardProps) => {
   
-  const companyNames: String[] = jobs.map((company) => company.companyName);
+  const companyNames: string[] = jobs.map((company) => company.companyName);
 
   const uniqueCompanyNames = Array.from(new Set(companyNames));
 
   const tables = uniqueCompanyNames.map((companyName) => {
     const filteredJobs = jobs.filter((job) => job.companyName === companyName);
-    return <JobTable companyName={companyName} jobs={filteredJobs} />;
+    return <JobTable companyName={companyName} jobs={filteredJobs} deleteJob={deleteJob} />;
   });
 
   return (

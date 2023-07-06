@@ -23,4 +23,8 @@ public class JobRepository {
     public Job saveJob(Job job) {
         return repo.save(job);
     }
+
+    public void deleteJob(Long jobId) {
+        repo.deleteById(jobId);
+    }
 }

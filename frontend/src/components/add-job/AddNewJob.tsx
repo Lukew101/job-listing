@@ -1,24 +1,24 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FormEvent, useState } from 'react';
 
-type JobProps = {
-    companyName: String,
-    title: String,
-    description: String,
-    address: String,
-    date: String,
-    status: String
+type JobAddProps = {
+    companyName: string,
+    title: string,
+    description: string,
+    address: string,
+    date: string,
+    status: string
   }
 
-  interface addNewJobForm {
-    addNewJob: (job: JobProps) => void;
-  }
+interface addNewJobForm {
+    addNewJob: (job: JobAddProps) => void;
+}
 
 const AddNewJob = ({ addNewJob }: addNewJobForm) => {
 
     const [formVisibility, setFormVisibility] = useState(false);
 
-    const postJob = async (requestBody: JobProps) => {
+    const postJob = async (requestBody: JobAddProps) => {
         const response = await fetch("http://localhost:8080/api/jobs", {
           method: "POST",
           headers: {
@@ -45,7 +45,7 @@ const AddNewJob = ({ addNewJob }: addNewJobForm) => {
         const dateInput = (event.target as HTMLFormElement).elements.namedItem("date") as HTMLInputElement;
         const statusInput = (event.target as HTMLFormElement).elements.namedItem("status") as HTMLInputElement;
 
-        const newJob : JobProps = {
+        const newJob : JobAddProps = {
             companyName: companyNameInput.value,
             title: titleInput.value,
             description: descriptionInput.value,

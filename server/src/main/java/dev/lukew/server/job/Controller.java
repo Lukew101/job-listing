@@ -1,6 +1,7 @@
 package dev.lukew.server.job;
 
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,5 +39,15 @@ public class Controller {
         headers.setLocation(location);
 
         return ResponseEntity.created(location).body(savedJob);
+    }
+
+    @DeleteMapping("/{jobId}")
+    public ResponseEntity<?> deleteJob(@PathVariable Long jobId) {
+        try {
+            service.deleteJob(jobId);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Failed to delete job: " + e.getMessage());
+        }
     }
 }
