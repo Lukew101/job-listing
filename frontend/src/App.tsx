@@ -28,6 +28,7 @@ function App() {
         throw new Error("Failed to fetch Salt people");
       }
       const data = await response.json();
+      setJobs(data);
       console.log(data);  
     } catch (error) {
       console.error(error);

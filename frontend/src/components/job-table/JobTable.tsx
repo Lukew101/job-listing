@@ -1,9 +1,29 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+type JobProps = {
+    companyName: String,
+    title: String,
+    description: String,
+    address: String,
+    date: String,
+    status: String
+}
 
-const JobTable = () => {
+type TableProps = {
+  companyName: String,
+  jobs: JobProps[]
+}
+
+const JobTable = ({ companyName, jobs }: TableProps) => {
   return (
-    <div>JobTable</div>
+    <div>
+      <h3>{companyName}</h3>
+      {jobs.map((job, index) => (
+        <div key={index}>
+          <p>{job.title}</p>
+          <p>{job.description}</p>
+        </div>
+      ))}
+    </div>
   )
 }
 
-export default JobTable
+export default JobTable;

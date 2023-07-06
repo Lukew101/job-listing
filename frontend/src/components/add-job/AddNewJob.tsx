@@ -87,11 +87,12 @@ const AddNewJob = ({ addNewJob }: addNewJobForm) => {
                 <label htmlFor='date'>Date</label>
                 <input type='date' name='date'></input>
                 <label htmlFor='status'>Status</label>
-                <select>
+                <select name='status' defaultValue="">
                     <option value="notStarted">Not started</option>
                     <option value="inProgress">In progress</option>
                     <option value="completed">Completed</option>
                 </select>
+                <button type='submit' className='form__button-addJob'>Add job</button>
             </form>
         )}
         
