@@ -16,9 +16,10 @@ type JobProps = {
 type BoardProps = {
   jobs: JobProps[];
   deleteJob: (id: string) => void;
+  updateJob: (job: JobProps) => void;
 }
 
-const JobListingBoard = ({ jobs, deleteJob }: BoardProps) => {
+const JobListingBoard = ({ jobs, deleteJob, updateJob }: BoardProps) => {
   
   const companyNames: string[] = jobs.map((company) => company.companyName);
 
@@ -26,7 +27,7 @@ const JobListingBoard = ({ jobs, deleteJob }: BoardProps) => {
 
   const tables = uniqueCompanyNames.map((companyName) => {
     const filteredJobs = jobs.filter((job) => job.companyName === companyName);
-    return <JobTable companyName={companyName} jobs={filteredJobs} deleteJob={deleteJob} />;
+    return <JobTable companyName={companyName} jobs={filteredJobs} deleteJob={deleteJob} updateJob={updateJob} />;
   });
 
   return (

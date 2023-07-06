@@ -15,11 +15,17 @@ type TableProps = {
   companyName: string;
   jobs: JobProps[];
   deleteJob: (id: string) => void;
+  updateJob: (job: JobProps) => void;
 };
 
-const JobTable = ({ companyName, jobs, deleteJob }: TableProps) => {
+const JobTable = ({ companyName, jobs, deleteJob, updateJob }: TableProps) => {
+
   const handleDeletePerson = (id: string) => {
     deleteJob(id);
+  };
+
+  const handleUpdateJob = (updatedJob: JobProps) => {
+    updateJob(updatedJob);
   };
 
   return (
@@ -41,6 +47,7 @@ const JobTable = ({ companyName, jobs, deleteJob }: TableProps) => {
               key={index}
               job={job}
               deleteJob={() => handleDeletePerson(job.id)}
+              updateJob={() => handleUpdateJob(job)}
             />
           ))}
         </tbody>

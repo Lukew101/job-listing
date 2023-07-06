@@ -51,11 +51,33 @@ function App() {
     }
   }
 
+  const updateJob = async (updatedJob: JobProps) => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/jobs/${updatedJob.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedJob),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to update job");
+      }
+      setJobs((jobs) =>
+        jobs.map((job) =>
+          job.id === updatedJob.id ? { ...job, ...updatedJob } : job
+        )
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <main>
       <h1>The Project Manager</h1>
       <AddNewJob addNewJob={fetchJobs}/>
-      <JobListingBoard jobs={jobs} deleteJob={deleteJobFetch} />
+      <JobListingBoard jobs={jobs} deleteJob={deleteJobFetch} updateJob={updateJob} />
     </main>
   )
 }
