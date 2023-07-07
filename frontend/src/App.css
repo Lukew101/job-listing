@@ -12,3 +12,17 @@
   justify-content: center;
 }
 
+.bold-number {
+  font-weight: bold;
+}
+
+.top-txt-img {
+  display: flex;
+  align-items: center;
+  max-width: 500px;
+  gap: 10px;
+}
+
+.top-txt-img__image {
+  max-width: 150px;
+}

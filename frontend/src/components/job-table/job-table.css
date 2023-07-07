@@ -1,0 +1,36 @@
+.job-table__container {
+  padding: 15px;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.table th {
+  font-weight: bold;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+.table textarea,
+.table input[type="text"],
+.table select {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.edit-delete__button button {
+  margin-right: 5px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}

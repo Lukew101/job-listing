@@ -6,6 +6,10 @@
     margin-bottom: 10px;
 }
 
+.description-input {
+    height: 100px;
+}
+
 @media screen and (min-width: 600px) {
   #addJobForm {
     width: 500px;

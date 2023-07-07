@@ -1,0 +1,12 @@
+.edit-delete__button {
+    background-color: white;
+}
+
+.edit-delete__button > * {
+    margin: 0 3px;
+}
+
+.cancel-button,
+.save-buttton {
+    margin: 3px;
+}

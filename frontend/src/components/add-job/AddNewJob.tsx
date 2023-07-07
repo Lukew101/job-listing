@@ -120,8 +120,8 @@ const AddNewJob = ({ addNewJob }: addNewJobForm) => {
               Description
             </label>
             <div className="col-sm-10">
-              <input
-                type="text"
+              <textarea
+              rows={5}
                 name="description"
                 className="form-control"
                 id="description"
@@ -175,7 +175,7 @@ const AddNewJob = ({ addNewJob }: addNewJobForm) => {
             <div className="col-sm-10 offset-sm-2">
               <button
                 type="submit"
-                className="form__button-addJob btn btn-primary"
+                className="form__button-addJob btn btn-success"
               >
                 Add job
               </button>

@@ -93,8 +93,10 @@ function App() {
     <main>
       <div className='top-section'>
         <h1>The Project Manager</h1>
-        <p>Hi there, you have {jobStatusCounts["in progress"]} active {jobStatusCounts["in progress"] === 1 ? 'job' : 'jobs'} and {jobStatusCounts["not started"]} {jobStatusCounts["not started"] === 1 ? 'job' : 'jobs'} to be started.</p>
-        <p>You have completed {jobStatusCounts["completed"]} {jobStatusCounts["completed"] === 1 ? 'job' : 'jobs'}.</p>
+        <div className='top-txt-img'>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYLTi9395RI1LBKVdns7oVr3SAjAvg7txoIg&usqp=CAU" alt="smiley face with thumb up" className='top-txt-img__image' />
+          <p>Hi there, you have <span className='bold-number'>{jobStatusCounts["in progress"]}</span> active {jobStatusCounts["in progress"] === 1 ? 'job' : 'jobs'} and <span className='bold-number'>{jobStatusCounts["not started"]}</span> {jobStatusCounts["not started"] === 1 ? 'job' : 'jobs'} to be started. You have completed <span className='bold-number'>{jobStatusCounts["completed"]}</span> {jobStatusCounts["completed"] === 1 ? 'job' : 'jobs'}. </p>
+        </div> 
       </div>
       <AddNewJob addNewJob={fetchJobs}/>
       <JobListingBoard jobs={jobs} deleteJob={deleteJobFetch} updateJob={updateJobFetch} />
