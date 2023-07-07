@@ -91,9 +91,8 @@ function App() {
 
   return (
     <main>
-      <h1>The Project Manager</h1>
-      <div>
-        <img></img>
+      <div className='top-section'>
+        <h1>The Project Manager</h1>
         <p>Hi there, you have {jobStatusCounts["in progress"]} active {jobStatusCounts["in progress"] === 1 ? 'job' : 'jobs'} and {jobStatusCounts["not started"]} {jobStatusCounts["not started"] === 1 ? 'job' : 'jobs'} to be started.</p>
         <p>You have completed {jobStatusCounts["completed"]} {jobStatusCounts["completed"] === 1 ? 'job' : 'jobs'}.</p>
       </div>

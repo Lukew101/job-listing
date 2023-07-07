@@ -1,0 +1,14 @@
+.top-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 0 20px 0;
+}
+
+.addJob-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+

@@ -1,6 +1,7 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { FormEvent, useState } from 'react';
-import JobTable from '../job-table/JobTable';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { FormEvent, useState } from "react";
+import JobTable from "../job-table/JobTable";
+import './job-listing.css';
 
 type JobProps = {
   id: string;
@@ -19,7 +20,7 @@ type BoardProps = {
 };
 
 const JobListingBoard = ({ jobs, deleteJob, updateJob }: BoardProps) => {
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
 
   const filteredJobs = jobs.filter((job) =>
     job.companyName.toLowerCase().startsWith(searchText.toLowerCase())
@@ -50,15 +51,18 @@ const JobListingBoard = ({ jobs, deleteJob, updateJob }: BoardProps) => {
 
   return (
     <section className="gallery">
-      <h2>Jobs</h2>
-      <div className="gallery__filter">
-        <input
-          type="text"
-          placeholder="Search by company name"
-          value={searchText}
-          onChange={handleSearchChange}
-        />
-      </div>
+        <div className="header-filter__container">
+            <h2 className="board-header">Jobs</h2>
+            <div className="gallery__filter">
+                <input
+                type="text"
+                placeholder="Search by company name"
+                className="mr-sm-2"
+                value={searchText}
+                onChange={handleSearchChange}
+                />
+            </div>
+        </div>
       {tables}
     </section>
   );

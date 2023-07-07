@@ -55,9 +55,7 @@ const Job = ({ job, deleteJob, updateJob }: JobProp) => {
     }));
   };
 
-  const handleStatusChange = (
-    e: React.ChangeEvent<HTMLSelectElement>
-  ) => {
+  const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = e.target;
     setEditedJob((prevJob) => ({
       ...prevJob,

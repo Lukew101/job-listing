@@ -1,4 +1,4 @@
-import { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Job from "../job/Job";
 
 type JobProps = {
@@ -32,14 +32,14 @@ const JobTable = ({ companyName, jobs, deleteJob, updateJob }: TableProps) => {
   return (
     <div>
       <h3>{companyName}</h3>
-      <table>
+      <table className='table table-light'>
         <thead>
           <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Address</th>
-            <th>Date</th>
-            <th>Status</th>
+            <th scope='col'>Title</th>
+            <th scope='col'>Description</th>
+            <th scope='col'>Address</th>
+            <th scope='col'>Date</th>
+            <th scope='col'>Status</th>
           </tr>
         </thead>
         <tbody>
