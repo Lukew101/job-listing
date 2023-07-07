@@ -6,7 +6,7 @@ Follow these steps to get the application up and running in your local environme
 ```bash git clone https://github.com/Lukew101/job-listing```
 | Steps                            | Front-end                 | Back-end                  |
 | ---------------------------------| ------------------------- | ------------------------- |
-| 2. Navigate into repo            | `cd frontend`            | `cd server`             |
+| 2. Navigate into repo            | `cd frontend`             | `cd server`               |
 | 3. Install Dependencies          | `npm install`             | `mvn install`             |
 | 4. Run the project               | `npm run dev`             | `mvn start`               |
 ## Usage
