@@ -51,7 +51,7 @@ function App() {
     }
   }
 
-  const updateJob = async (updatedJob: JobProps) => {
+  const updateJobFetch = async (updatedJob: JobProps) => {
     try {
       const response = await fetch(`http://localhost:8080/api/jobs/${updatedJob.id}`, {
         method: "PUT",
@@ -63,7 +63,6 @@ function App() {
       if (!response.ok) {
         throw new Error("Failed to update job");
       }
-
       setJobs((jobs) =>
         jobs.map((job) =>
           job.id === updatedJob.id ? { ...job, ...updatedJob } : job
@@ -74,11 +73,32 @@ function App() {
     }
   };
 
+  const countJobsByStatus = () => {
+    const statusCounts: { [key: string]: number } = {
+      "completed": 0,
+      "not started": 0,
+      "in progress": 0,
+    };
+
+    jobs.forEach((job) => {
+      statusCounts[job.status]++;
+    });
+
+    return statusCounts;
+  };
+
+  const jobStatusCounts = countJobsByStatus();
+
   return (
     <main>
       <h1>The Project Manager</h1>
+      <div>
+        <img></img>
+        <p>Hi there, you have {jobStatusCounts["in progress"]} active {jobStatusCounts["in progress"] === 1 ? 'job' : 'jobs'} and {jobStatusCounts["not started"]} {jobStatusCounts["not started"] === 1 ? 'job' : 'jobs'} to be started.</p>
+        <p>You have completed {jobStatusCounts["completed"]} {jobStatusCounts["completed"] === 1 ? 'job' : 'jobs'}.</p>
+      </div>
       <AddNewJob addNewJob={fetchJobs}/>
-      <JobListingBoard jobs={jobs} deleteJob={deleteJobFetch} updateJob={updateJob} />
+      <JobListingBoard jobs={jobs} deleteJob={deleteJobFetch} updateJob={updateJobFetch} />
     </main>
   )
 }

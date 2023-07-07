@@ -126,8 +126,8 @@ const Job = ({ job, deleteJob, updateJob }: JobProp) => {
           </>
         ) : (
           <>
-            <button onClick={handleDelete}>Delete</button>
             <button onClick={handleEdit}>Edit</button>
+            <button onClick={handleDelete}>Delete</button>
           </>
         )}
       </td>

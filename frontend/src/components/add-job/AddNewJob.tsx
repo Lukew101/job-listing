@@ -69,9 +69,6 @@ const AddNewJob = ({ addNewJob }: addNewJobForm) => {
   return (
     <section className='addJob-section'>
         <div className='jobsInfo-container'>
-            <img></img>
-            <p>Hi there, you have 5 active jobs and 10 jobs to be started</p>
-            <p>You have completed 15 jobs</p>
         </div>
         <button onClick={handleAddJobButtonClick} className='add-job-button'>Add job to list</button>
         {formVisibility && (
