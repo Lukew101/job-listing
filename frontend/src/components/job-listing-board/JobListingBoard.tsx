@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FormEvent, useState } from "react";
 import JobTable from "../job-table/JobTable";
-import './job-listing.css';
+import "./job-listing.css";
 
 type JobProps = {
   id: string;
@@ -51,18 +51,18 @@ const JobListingBoard = ({ jobs, deleteJob, updateJob }: BoardProps) => {
 
   return (
     <section className="gallery">
-        <div className="header-filter__container">
-            <h2 className="board-header">Jobs</h2>
-            <div className="gallery__filter">
-                <input
-                type="text"
-                placeholder="Search by company name"
-                className="mr-sm-2"
-                value={searchText}
-                onChange={handleSearchChange}
-                />
-            </div>
+      <div className="header-filter__container">
+        <h2 className="board-header">Jobs</h2>
+        <div className="gallery__filter">
+          <input
+            type="text"
+            placeholder="Search by company name"
+            className="mr-sm-2"
+            value={searchText}
+            onChange={handleSearchChange}
+          />
         </div>
+      </div>
       {tables}
     </section>
   );

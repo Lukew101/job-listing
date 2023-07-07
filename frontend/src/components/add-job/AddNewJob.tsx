@@ -121,7 +121,7 @@ const AddNewJob = ({ addNewJob }: addNewJobForm) => {
             </label>
             <div className="col-sm-10">
               <textarea
-              rows={5}
+                rows={5}
                 name="description"
                 className="form-control"
                 id="description"

@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
-import './job.css';
+import "./job.css";
 
 type JobProps = {
   id: string;
@@ -120,13 +120,27 @@ const Job = ({ job, deleteJob, updateJob }: JobProp) => {
       <td className="edit-delete__button">
         {editMode ? (
           <>
-            <button onClick={handleSave} className="save-button btn btn-success">Save</button>
-            <button onClick={handleCancel} className="cancel-button btn btn-secondary">Cancel</button>
+            <button
+              onClick={handleSave}
+              className="save-button btn btn-success"
+            >
+              Save
+            </button>
+            <button
+              onClick={handleCancel}
+              className="cancel-button btn btn-secondary"
+            >
+              Cancel
+            </button>
           </>
         ) : (
           <>
-            <button onClick={handleEdit} className="btn btn-primary">Edit</button>
-            <button onClick={handleDelete} className="btn btn-danger">Delete</button>
+            <button onClick={handleEdit} className="btn btn-primary">
+              Edit
+            </button>
+            <button onClick={handleDelete} className="btn btn-danger">
+              Delete
+            </button>
           </>
         )}
       </td>
